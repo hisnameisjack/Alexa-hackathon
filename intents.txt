@@ -4,7 +4,6 @@
       "intent": "HeadlinesIntent",
       "slots": []
     },
-    
     {
       "intent": "AMAZON.YesIntent"
     },
