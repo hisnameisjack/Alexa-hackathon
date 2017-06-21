@@ -7,7 +7,7 @@ var languageStrings = {
         'translation': {
             'WELCOME' : "Welcome to the News Headline app!",
             'HELP'    : "Say headlines please, to hear more headlines",
-            'ABOUT'   : "The News Headline App was orignally created in a hackathon conducted in Amazon by the Brandeis JBS students in summer 2017.",
+            'ABOUT'   : "The News Headline App was orignally created in a hackathon conducted in Amazon by the Brandeis JBS students in the summer 2017. The creators are the illustrious quadro Elysium, Fluffy Bunny, S, T, Chen! and Jarrett",
             'STOP'    : "Okay, see you next time!"
         }
     }
