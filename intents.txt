@@ -5,6 +5,10 @@
       "slots": []
     },
     {
+      "intent": "CategoryIntent",
+      "slots:: []
+    },
+    {
       "intent": "AMAZON.YesIntent"
     },
     {
