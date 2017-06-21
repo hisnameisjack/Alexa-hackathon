@@ -1,1 +1,9 @@
+HeadlinesIntent what are the headlines today
+HeadlinesIntent give me the top headlines today
+HeadlinesIntent 
 
+
+YesIntent 
+
+
+NoIntent 
