@@ -28,4 +28,34 @@
           "humidity":"58",
           "pressure":"1009.0",
           "rising":"0",
-          "visibility":"16.1"},"astronomy":{"sunrise":"5:5 am","sunset":"8:24 pm"},"image":{"title":"Yahoo! Weather","width":"142","height":"18","link":"http://weather.yahoo.com","url":"http://l.yimg.com/a/i/brand/purplelogo//uh/us/news-wea.gif"},"item":{"title":"Conditions for Gloucester, MA, US at 12:00 PM EDT","lat":"42.614349","long":"-70.668114","link":"http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-2411521/","pubDate":"Wed, 21 Jun 2017 12:00 PM EDT","condition":{"code":"30","date":"Wed, 21 Jun 2017 12:00 PM EDT","temp":"75","text":"Partly Cloudy"},"forecast":[{"code":"30","date":"21 Jun 2017","day":"Wed","high":"76","low":"63","text":"Partly Cloudy"},{"code":"30","date":"22 Jun 2017","day":"Thu","high":"75","low":"62","text":"Partly Cloudy"},{"code":"4","date":"23 Jun 2017","day":"Fri","high":"81","low":"66","text":"Thunderstorms"},{"code":"30","date":"24 Jun 2017","day":"Sat","high":"79","low":"70","text":"Partly Cloudy"},{"code":"30","date":"25 Jun 2017","day":"Sun","high":"76","low":"64","text":"Partly Cloudy"},{"code":"30","date":"26 Jun 2017","day":"Mon","high":"73","low":"63","text":"Partly Cloudy"},{"code":"30","date":"27 Jun 2017","day":"Tue","high":"75","low":"60","text":"Partly Cloudy"},{"code":"30","date":"28 Jun 2017","day":"Wed","high":"73","low":"59","text":"Partly Cloudy"},{"code":"30","date":"29 Jun 2017","day":"Thu","high":"72","low":"61","text":"Partly Cloudy"},{"code":"23","date":"30 Jun 2017","day":"Fri","high":"74","low":"63","text":"Breezy"}],"description":"<![CDATA[<img src=\"http://l.yimg.com/a/i/us/we/52/30.gif\"/>\n<BR />\n<b>Current Conditions:</b>\n<BR />Partly Cloudy\n<BR />\n<BR />\n<b>Forecast:</b>\n<BR /> Wed - Partly Cloudy. High: 76Low: 63\n<BR /> Thu - Partly Cloudy. High: 75Low: 62\n<BR /> Fri - Thunderstorms. High: 81Low: 66\n<BR /> Sat - Partly Cloudy. High: 79Low: 70\n<BR /> Sun - Partly Cloudy. High: 76Low: 64\n<BR />\n<BR />\n<a href=\"http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-2411521/\">Full Forecast at Yahoo! Weather</a>\n<BR />\n<BR />\n(provided by <a href=\"http://www.weather.com\" >The Weather Channel</a>)\n<BR />\n]]>","guid":{"isPermaLink":"false"}}}}}}
+          "visibility":"16.1"},
+        "astronomy":{
+          "sunrise":"5:5 am",
+          "sunset":"8:24 pm"},
+        "image":{
+          "title":"Yahoo! Weather",
+          "width":"142",
+          "height":"18",
+          "link":"http://weather.yahoo.com",
+          "url":"http://l.yimg.com/a/i/brand/purplelogo//uh/us/news-wea.gif"},
+          "item":{
+            "title":"Conditions for Gloucester, MA, US at 12:00 PM EDT",
+            "lat":"42.614349",
+            "long":"-70.668114",
+            "link":"http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-2411521/",
+            "pubDate":"Wed, 21 Jun 2017 12:00 PM EDT",
+            "condition":{
+              "code":"30",
+              "date":"Wed, 21 Jun 2017 12:00 PM EDT",
+              "temp":"75","text":"Partly Cloudy"},
+            "forecast":[{
+              "code":"30",
+              "date":"21 Jun 2017",
+              "day":"Wed",
+              "high":"76",
+              "low":"63",
+              "text":"Partly Cloudy"},
+              {"code":"30",
+                "date":"22 Jun 2017",
+                "day":"Thu","high":"75",
+                "low":"62","text":"Partly Cloudy"},{"code":"4","date":"23 Jun 2017","day":"Fri","high":"81","low":"66","text":"Thunderstorms"},{"code":"30","date":"24 Jun 2017","day":"Sat","high":"79","low":"70","text":"Partly Cloudy"},{"code":"30","date":"25 Jun 2017","day":"Sun","high":"76","low":"64","text":"Partly Cloudy"},{"code":"30","date":"26 Jun 2017","day":"Mon","high":"73","low":"63","text":"Partly Cloudy"},{"code":"30","date":"27 Jun 2017","day":"Tue","high":"75","low":"60","text":"Partly Cloudy"},{"code":"30","date":"28 Jun 2017","day":"Wed","high":"73","low":"59","text":"Partly Cloudy"},{"code":"30","date":"29 Jun 2017","day":"Thu","high":"72","low":"61","text":"Partly Cloudy"},{"code":"23","date":"30 Jun 2017","day":"Fri","high":"74","low":"63","text":"Breezy"}],"description":"<![CDATA[<img src=\"http://l.yimg.com/a/i/us/we/52/30.gif\"/>\n<BR />\n<b>Current Conditions:</b>\n<BR />Partly Cloudy\n<BR />\n<BR />\n<b>Forecast:</b>\n<BR /> Wed - Partly Cloudy. High: 76Low: 63\n<BR /> Thu - Partly Cloudy. High: 75Low: 62\n<BR /> Fri - Thunderstorms. High: 81Low: 66\n<BR /> Sat - Partly Cloudy. High: 79Low: 70\n<BR /> Sun - Partly Cloudy. High: 76Low: 64\n<BR />\n<BR />\n<a href=\"http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-2411521/\">Full Forecast at Yahoo! Weather</a>\n<BR />\n<BR />\n(provided by <a href=\"http://www.weather.com\" >The Weather Channel</a>)\n<BR />\n]]>","guid":{"isPermaLink":"false"}}}}}}

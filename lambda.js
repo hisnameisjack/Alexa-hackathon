@@ -110,7 +110,7 @@ var handlers = {
 
     'GoOutIntent': function () {
 
-        getHeadlines( ( title, description, currentCondition) => {
+        getHeadlines( ( title, description, source) => {
             // time format 10:34 PM
             // currentTemp 72
             // currentCondition, e.g.  Sunny, Breezy, Thunderstorms, Showers, Rain, Partly Cloudy, Mostly Cloudy, Mostly Sunny
