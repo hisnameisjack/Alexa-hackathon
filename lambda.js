@@ -22,8 +22,9 @@ var descriptions = [];
 
 var myAPI = {
     host: 'newsapi.org',
-    path: `v1/articles?source=the-next-web&sortBy=latest&apiKey=ada70b906ec04ef594be234510a0c61d`,
-    method: 'GET'
+    path: '/v1/articles?source=associated-press&sortBy=top&apiKey=ada70b906ec04ef594be234510a0c61d',
+    method: 'GET',
+    port: 443
 };
 // 2. Skill Code =======================================================================================================
 
@@ -48,10 +49,10 @@ var handlers = {
         this.emit(':ask', this.t('ABOUT'));
     },
     'SummaryIntent': function () {
-        
+
     },
 
-    'HeadlineIntent': function () {
+    'HeadlinesIntent': function () {
 
         getHeadlines( (source) => {
             // time format 10:34 PM
@@ -61,11 +62,14 @@ var handlers = {
             // sample API URL for Irvine, CA
             // https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22irvine%2C%20ca%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys
 
-            this.emit(':tell', 'Some headlines from ' + source+ ' are ');
-
+            var alltitles= "";
             for(i=0; i<titles.length; i++){
-              this.emit(':tell', titles[i]);
+              alltitles= alltitles+', '+titles[i];
             }
+
+            this.emit(':tell', 'Some headlines from ' + source + ' are ' + alltitles);
+
+
 
             // TODO
             // Decide, based on current time and weather conditions,
@@ -130,10 +134,10 @@ function getHeadlines(callback) {
         });
         res.on('end', () => {
             var channelObj = JSON.parse(returnData);
-
-            var Source = channelObj.source.toString();
+            console.log(JSON.stringify(returnData,null,2));
+            var source = channelObj.source.toString();
             for(i = 0; i < channelObj.articles.length; i++){
-              titles[i] = channelObj.articles[i].author.toString();
+              titles[i] = channelObj.articles[i].title.toString();
               descriptions[i] = channelObj.articles[i].description.toString();
             }
 
