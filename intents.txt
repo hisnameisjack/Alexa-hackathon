@@ -5,14 +5,7 @@
       "slots": []
     },
     {
-      "intent": "CategoryIntent",
-      "slots:: []
-    },
-    {
-      "intent": "AMAZON.YesIntent"
-    },
-    {
-      "intent": "AMAZON.NoIntent"
+      "intent": "AboutIntent",
     },
     {
       "intent": "AMAZON.HelpIntent"
