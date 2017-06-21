@@ -108,7 +108,7 @@ var handlers = {
 
     },
 
-    'Headline Intent': function () {
+    'HeadlineIntent': function () {
 
         getHeadlines( ( title, description, source) => {
             // time format 10:34 PM
@@ -171,7 +171,7 @@ function getRestaurantByName(restaurantName) {
     }
     return restaurant;
 }
-function getWeather(callback) {
+function getHeadlines(callback) {
     var https = require('https');
 
 
@@ -183,16 +183,16 @@ function getWeather(callback) {
             returnData = returnData + chunk;
         });
         res.on('end', () => {
-            var channelObj = JSON.parse(returnData).query.results.channel;
+            var channelObj = JSON.parse(returnData);
 
-            var localTime = channelObj.lastBuildDate.toString();
-            localTime = localTime.substring(17, 25).trim();
+            var Source = channelObj.source.toString();
 
-            var currentTemp = channelObj.item.condition.temp;
 
-            var currentCondition = channelObj.item.condition.text;
+            var title = channelObj.articles.author.toString();
 
-            callback(localTime, currentTemp, currentCondition);
+            var description = channelObj.articles.description.toString();
+
+            callback(title, description, source);
 
         });
 
