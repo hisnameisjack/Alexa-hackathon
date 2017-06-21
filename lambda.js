@@ -5,9 +5,9 @@
 var languageStrings = {
     'en': {
         'translation': {
-            'WELCOME' : "Would you like to hear the headlines today?",
+            'WELCOME' : "Welcome to the News Headline app!",
             'HELP'    : "Say about, to hear more about the city, or say coffee, breakfast, lunch, or dinner, to hear local restaurant suggestions, or say, go outside. ",
-            'ABOUT'   : "Gloucester Massachusetts is a city on the Atlantic Ocean.  A popular summer beach destination, Gloucester has a rich history of fishing and ship building.",
+            'ABOUT'   : "The News Headline App was orignally created in a hackathon conducted in Amazon by the Brandeis JBS students in summer 2017.",
             'STOP'    : "Okay, see you next time!"
         }
     }
