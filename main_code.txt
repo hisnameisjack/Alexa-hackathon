@@ -1,11 +1,10 @@
-
 // 1. Text strings =====================================================================================================
 //    Modify these strings and messages to change the behavior of your Lambda function
 
 var languageStrings = {
     'en': {
         'translation': {
-            'WELCOME' : "Would you like to hear the headlines today?",
+            'WELCOME' : "Welcome to Gloucester Guide!",
             'HELP'    : "Say about, to hear more about the city, or say coffee, breakfast, lunch, or dinner, to hear local restaurant suggestions, or say, go outside. ",
             'ABOUT'   : "Gloucester Massachusetts is a city on the Atlantic Ocean.  A popular summer beach destination, Gloucester has a rich history of fishing and ship building.",
             'STOP'    : "Okay, see you next time!"
@@ -56,8 +55,9 @@ var data = {
 // This free API recommends no more than 2000 calls per day
 
 var myAPI = {
-    host: 'newsapi.org',
-    path: `v1/articles?source=the-next-web&sortBy=latest&apiKey=ada70b906ec04ef594be234510a0c61d`,
+    host: 'query.yahooapis.com',
+    port: 443,
+    path: `/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22${encodeURIComponent(data.city)}%2C%20${data.state}%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys`,
     method: 'GET'
 };
 // 2. Skill Code =======================================================================================================
@@ -82,18 +82,32 @@ var handlers = {
     'AboutIntent': function () {
         this.emit(':ask', this.t('ABOUT'));
     },
-    'HomeIntent': function () {
+    'CoffeeIntent': function () {
         var restaurant = randomArrayElement(getRestaurantsByMeal('coffee'));
         this.attributes['restaurant'] = restaurant.name;
 
         var say = 'For a great coffee shop, I recommend, ' + restaurant.name + '. Would you like to hear more?';
         this.emit(':ask', say);
     },
-    'SummaryIntent': function () {
+    'BreakfastIntent': function () {
         var restaurant = randomArrayElement(getRestaurantsByMeal('breakfast'));
         this.attributes['restaurant'] = restaurant.name;
 
         var say = 'For breakfast, try this, ' + restaurant.name + '. Would you like to hear more?';
+        this.emit(':ask', say);
+    },
+    'LunchIntent': function () {
+        var restaurant = randomArrayElement(getRestaurantsByMeal('lunch'));
+        this.attributes['restaurant'] = restaurant.name;
+
+        var say = 'Lunch time! Here is a good spot. ' + restaurant.name + '. Would you like to hear more?';
+        this.emit(':ask', say);
+    },
+    'DinnerIntent': function () {
+        var restaurant = randomArrayElement(getRestaurantsByMeal('dinner'));
+        this.attributes['restaurant'] = restaurant.name;
+
+        var say = 'Enjoy dinner at, ' + restaurant.name + '. Would you like to hear more?';
         this.emit(':ask', say);
     },
 
@@ -117,7 +131,7 @@ var handlers = {
 
     'GoOutIntent': function () {
 
-        getHeadlines( ( title, description, source) => {
+        getWeather( ( localTime, currentTemp, currentCondition) => {
             // time format 10:34 PM
             // currentTemp 72
             // currentCondition, e.g.  Sunny, Breezy, Thunderstorms, Showers, Rain, Partly Cloudy, Mostly Cloudy, Mostly Sunny
@@ -125,9 +139,10 @@ var handlers = {
             // sample API URL for Irvine, CA
             // https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22irvine%2C%20ca%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys
 
-            this.emit(':tell', 'One of  ' + source + ' top headline\'s is'
-                + title + ' The description of the article is '
-                + description);
+            this.emit(':tell', 'It is ' + localTime
+                + ' and the weather in ' + data.city
+                + ' is '
+                + currentTemp + ' and ' + currentCondition);
 
             // TODO
             // Decide, based on current time and weather conditions,
