@@ -1,9 +1,11 @@
 HeadlinesIntent what are the headlines today
 HeadlinesIntent give me the top headlines today
-HeadlinesIntent 
+HeadlinesIntent headlines please
 
 
-YesIntent 
+YesIntent yes
+YesIntent yeah
 
 
-NoIntent 
+NoIntent no
+NoIntent nah
