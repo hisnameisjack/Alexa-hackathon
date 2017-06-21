@@ -133,7 +133,7 @@ var handlers = {
     },
 
     'AMAZON.NoIntent': function () {
-        this.emit('AMAZON.StopIntent');
+        this.emit('HeadlinesIntent');
     },
     'AMAZON.HelpIntent': function () {
         this.emit(':ask', this.t('HELP'));
