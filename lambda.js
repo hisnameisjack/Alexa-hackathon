@@ -187,10 +187,10 @@ function getHeadlines(callback) {
 
             var Source = channelObj.source.toString();
 
-
-            var title = channelObj.articles.author.toString();
-
-            var description = channelObj.articles.description.toString();
+            for(i = 0; i < channelObj.articles.length -1; i++){
+              var title = channelObj.articles[i].author.toString();
+              var description = channelObj.articles[i].description.toString();
+            }
 
             callback(title, description, source);
 
