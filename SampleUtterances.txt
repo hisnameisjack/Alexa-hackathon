@@ -3,9 +3,5 @@ HeadlinesIntent give me the top headlines today
 HeadlinesIntent headlines please
 
 
-YesIntent yes
-YesIntent yeah
-
-
-NoIntent no
-NoIntent nah
+AboutIntent tell us about this app
+AboutIntent about
