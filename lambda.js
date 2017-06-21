@@ -13,44 +13,9 @@ var languageStrings = {
     }
     // , 'de-DE': { 'translation' : { 'TITLE'   : "Local Helfer etc." } }
 };
-var data = {
-    "city"        : "Gloucester",
-    "state"       : "MA",
-    "postcode"    : "01930",
-    "restaurants" : [
-        { "name":"Zeke's Place",
-            "address":"66 East Main Street", "phone": "978-283-0474",
-            "meals": "breakfast, lunch",
-            "description": "A cozy and popular spot for breakfast.  Try the blueberry french toast!"
-        },
-        { "name":"Morning Glory Coffee Shop",
-            "address":"25 Western Avenue", "phone": "978-281-1851",
-            "meals": "coffee, breakfast, lunch",
-            "description": "A homestyle diner located just across the street from the harbor sea wall."
-        },
-        { "name":"Sugar Magnolias",
-            "address":"112 Main Street", "phone": "978-281-5310",
-            "meals": "breakfast, lunch",
-            "description": "A quaint eatery, popular for weekend brunch.  Try the carrot cake pancakes."
-        },
-        { "name":"Seaport Grille",
-            "address":"6 Rowe Square", "phone": "978-282-9799",
-            "meals": "lunch, dinner",
-            "description": "Serving seafood, steak and casual fare.  Enjoy harbor views on the deck."
-        },
-        { "name":"Latitude 43",
-            "address":"25 Rogers Street", "phone": "978-281-0223",
-            "meals": "lunch, dinner",
-            "description": "Features artsy decor and sushi specials.  Live music evenings at the adjoining Minglewood Tavern."
-        },
-        { "name":"George's Coffee Shop",
-            "address":"178 Washington Street", "phone": "978-281-1910",
-            "meals": "coffee, breakfast, lunch",
-            "description": "A highly rated local diner with generously sized plates."
-        },
+var titles = [];
+var descriptions = [];
 
-    ],
-}
 
 // Weather courtesy of the Yahoo Weather API.
 // This free API recommends no more than 2000 calls per day
@@ -83,34 +48,12 @@ var handlers = {
         this.emit(':ask', this.t('ABOUT'));
     },
     'SummaryIntent': function () {
-        var restaurant = randomArrayElement(getRestaurantsByMeal('breakfast'));
-        this.attributes['restaurant'] = restaurant.name;
-
-        var say = 'For breakfast, try this, ' + restaurant.name + '. Would you like to hear more?';
-        this.emit(':ask', say);
-    },
-
-    'AMAZON.YesIntent': function () {
-        var restaurantName = this.attributes['restaurant'];
-        var restaurantDetails = getRestaurantByName(restaurantName);
-
-        var say = restaurantDetails.name
-            + ' is located at ' + restaurantDetails.address
-            + ', the phone number is ' + restaurantDetails.phone
-            + ', and the description is, ' + restaurantDetails.description
-            + '  I have sent these details to the Alexa App on your phone.  Enjoy your meal! <say-as interpret-as="interjection">bon appetit</say-as>' ;
-
-        var card = restaurantDetails.name + '\n' + restaurantDetails.address + '\n'
-            + data.city + ', ' + data.state + ' ' + data.postcode
-            + '\nphone: ' + restaurantDetails.phone + '\n';
-
-        this.emit(':tellWithCard', say, restaurantDetails.name, card);
-
+        
     },
 
     'HeadlineIntent': function () {
 
-        getHeadlines( ( title, description, source) => {
+        getHeadlines( (source) => {
             // time format 10:34 PM
             // currentTemp 72
             // currentCondition, e.g.  Sunny, Breezy, Thunderstorms, Showers, Rain, Partly Cloudy, Mostly Cloudy, Mostly Sunny
@@ -118,8 +61,11 @@ var handlers = {
             // sample API URL for Irvine, CA
             // https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22irvine%2C%20ca%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys
 
-            this.emit(':tell', 'A top headline from ' + source
-                + ' is ' + title);
+            this.emit(':tell', 'Some headlines from ' + source+ ' are ');
+
+            for(i=0; i<titles.length; i++){
+              this.emit(':tell', titles[i]);
+            }
 
             // TODO
             // Decide, based on current time and weather conditions,
@@ -186,13 +132,12 @@ function getHeadlines(callback) {
             var channelObj = JSON.parse(returnData);
 
             var Source = channelObj.source.toString();
-
-            for(i = 0; i < channelObj.articles.length -1; i++){
-              var title = channelObj.articles[i].author.toString();
-              var description = channelObj.articles[i].description.toString();
+            for(i = 0; i < channelObj.articles.length; i++){
+              titles[i] = channelObj.articles[i].author.toString();
+              descriptions[i] = channelObj.articles[i].description.toString();
             }
 
-            callback(title, description, source);
+            callback(source);
 
         });
 
