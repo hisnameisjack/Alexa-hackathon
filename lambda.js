@@ -115,7 +115,7 @@ var handlers = {
 
     },
 
-    'GoOutIntent': function () {
+    'HeadlineIntent': function () {
 
         getHeadlines( ( title, description, source) => {
             // time format 10:34 PM
