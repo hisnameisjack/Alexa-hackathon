@@ -110,7 +110,7 @@ var handlers = {
 
     'Headline Intent': function () {
 
-        getHeadlines( ( title, description, currentCondition) => {
+        getHeadlines( ( title, description, source) => {
             // time format 10:34 PM
             // currentTemp 72
             // currentCondition, e.g.  Sunny, Breezy, Thunderstorms, Showers, Rain, Partly Cloudy, Mostly Cloudy, Mostly Sunny
@@ -118,10 +118,8 @@ var handlers = {
             // sample API URL for Irvine, CA
             // https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22irvine%2C%20ca%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys
 
-            this.emit(':tell', 'It is ' + localTime
-                + ' and the weather in ' + data.city
-                + ' is '
-                + currentTemp + ' and ' + currentCondition);
+            this.emit(':tell', 'A top headline from ' + source
+                + ' is ' + title);
 
             // TODO
             // Decide, based on current time and weather conditions,
