@@ -57,7 +57,6 @@ var data = {
 
 var myAPI = {
     host: 'newsapi.org',
-    port: 443,
     path: `v1/articles?source=the-next-web&sortBy=latest&apiKey=ada70b906ec04ef594be234510a0c61d`,
     method: 'GET'
 };
@@ -83,32 +82,18 @@ var handlers = {
     'AboutIntent': function () {
         this.emit(':ask', this.t('ABOUT'));
     },
-    'CoffeeIntent': function () {
+    'HomeIntent': function () {
         var restaurant = randomArrayElement(getRestaurantsByMeal('coffee'));
         this.attributes['restaurant'] = restaurant.name;
 
         var say = 'For a great coffee shop, I recommend, ' + restaurant.name + '. Would you like to hear more?';
         this.emit(':ask', say);
     },
-    'BreakfastIntent': function () {
+    'SummaryIntent': function () {
         var restaurant = randomArrayElement(getRestaurantsByMeal('breakfast'));
         this.attributes['restaurant'] = restaurant.name;
 
         var say = 'For breakfast, try this, ' + restaurant.name + '. Would you like to hear more?';
-        this.emit(':ask', say);
-    },
-    'LunchIntent': function () {
-        var restaurant = randomArrayElement(getRestaurantsByMeal('lunch'));
-        this.attributes['restaurant'] = restaurant.name;
-
-        var say = 'Lunch time! Here is a good spot. ' + restaurant.name + '. Would you like to hear more?';
-        this.emit(':ask', say);
-    },
-    'DinnerIntent': function () {
-        var restaurant = randomArrayElement(getRestaurantsByMeal('dinner'));
-        this.attributes['restaurant'] = restaurant.name;
-
-        var say = 'Enjoy dinner at, ' + restaurant.name + '. Would you like to hear more?';
         this.emit(':ask', say);
     },
 
@@ -132,7 +117,7 @@ var handlers = {
 
     'GoOutIntent': function () {
 
-        getWeather( ( localTime, currentTemp, currentCondition) => {
+        getHeadlines( ( title, description, currentCondition) => {
             // time format 10:34 PM
             // currentTemp 72
             // currentCondition, e.g.  Sunny, Breezy, Thunderstorms, Showers, Rain, Partly Cloudy, Mostly Cloudy, Mostly Sunny
